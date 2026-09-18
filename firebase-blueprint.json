@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile data",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "email", "role"]
+    },
+    "Staff": {
+      "title": "Staff",
+      "description": "Staff member details",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "nip": { "type": "string" },
+        "position": { "type": "string" },
+        "rank": { "type": "string" },
+        "type": { "type": "string" }
+      },
+      "required": ["name", "position", "type"]
+    },
+    "TravelRequest": {
+      "title": "Travel Request",
+      "description": "SPPD request details",
+      "type": "object",
+      "properties": {
+        "staffId": { "type": "string" },
+        "staffUid": { "type": "string" },
+        "staffName": { "type": "string" },
+        "purpose": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["staffId", "purpose", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Stores user profiles"
+    },
+    "/staff/{staffId}": {
+      "schema": { "$ref": "#/entities/Staff" },
+      "description": "Stores staff directory"
+    },
+    "/travel_requests/{requestId}": {
+      "schema": { "$ref": "#/entities/TravelRequest" },
+      "description": "Stores travel requests"
+    }
+  }
+}
